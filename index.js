@@ -8,24 +8,6 @@ const express = require('express');
 const app = express();
 const PORT = 9000;
 
-async function startBot() {
-    try {
-        const webhookInfo = await bot.getWebhookInfo();
-        if (webhookInfo.url) {
-            console.log('Webhook обнаружен. Удаляем его...');
-            await bot.deleteWebhook();
-        }
-
-        // Запускаем polling
-        bot.startPolling();
-        console.log('Бот запущен в режиме polling!');
-    } catch (error) {
-        console.error('Ошибка при запуске бота:', error);
-    }
-}
-
-// Запускаем бота
-startBot();
 
 app.get('/', (req, res) => {
     res.send('Telegram bot is running!');
