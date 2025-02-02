@@ -2,19 +2,8 @@ const TelegramBot = require('node-telegram-bot-api');
 
 // Bot tokeningizni kiriting
 const token = '8065348509:AAH2P09KhxE0uJxCn7O72EHCg4U1upOj4rA';
-const bot = new TelegramBot(token, { polling: false });
+const bot = new TelegramBot(token, { polling: true });
 
-const express = require('express');
-const app = express();
-const PORT = 9000;
-
-
-app.get('/', (req, res) => {
-    res.send('Telegram bot is running!');
-});
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
 
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
